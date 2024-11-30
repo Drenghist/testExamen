@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TestExamen</string>
+    <string name="welcome">Bienvenido al juego de Carta Alta</string>
+    <string name="pulsa">Pulsa en \'Jugar\' para comenzar</string>
+    <string name="jugar">Jugar</string>
+    <string name="titulo_game">Carta Alta</string>
+    <string name="j1">Area de juego de jugador 1</string>
+    <string name="j2">Area de juego de jugador 2</string>
+    <string name="noCard">No ha robado aun</string>
+    <string name="valorCarta">Su carta es: %1$s</string>
+    <string name="terminar_partida">Terminar partida</string>
+    <string name="win_p1">Ha ganado el jugador 1</string>
+    <string name="win_p2">Ha ganado el jugador 2</string>
+    <string name="draw">Ha habido un empate</string>
+</resources>
