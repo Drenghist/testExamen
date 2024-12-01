@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -29,13 +30,15 @@ import com.example.testexamen.ui.theme.TestExamenTheme
 fun GameOver (
     goHome: () -> Unit,
     winner : Int,
+    resetGame : () -> Unit,
     ) {
     Scaffold () {
         GameOverContent(
             // it es el padding que nos llega del Scaffold
             modifier = Modifier.padding(it),
             winner = winner,
-
+            goHome = goHome,
+            resetGame = resetGame,
         )
     }
 
@@ -44,7 +47,7 @@ fun GameOver (
 }
 
 @Composable
-fun GameOverContent (winner : Int,modifier : Modifier) {
+fun GameOverContent (winner : Int,goHome:()-> Unit,resetGame: () -> Unit,modifier : Modifier) {
     Column (
         modifier= Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -55,17 +58,21 @@ fun GameOverContent (winner : Int,modifier : Modifier) {
             style = MaterialTheme.typography.titleLarge,
             color= MaterialTheme.colorScheme.primary
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(64.dp))
 
-        Spacer(modifier = Modifier.height(4.dp))
+
         Button(
-            onClick = {}
+            onClick = {
+                goHome()
+                resetGame()
+
+            }
         ){
-            Text(stringResource(R.string.jugar))
             Icon(
-                imageVector = Icons.Filled.PlayArrow,
+                imageVector = Icons.Filled.Refresh,
                 contentDescription = ""
             )
+            Text(stringResource(R.string.reiniciar))
         }
 
     }
@@ -77,6 +84,6 @@ fun GameOverContent (winner : Int,modifier : Modifier) {
 fun OverPreview() {
     val navController = rememberNavController()
     TestExamenTheme {
-        GameOver({ navController.navigate(route = AppScreens.GameOver.route)},0)
+        GameOver({ navController.navigate(route = AppScreens.GameOver.route)},0, {})
     }
 }

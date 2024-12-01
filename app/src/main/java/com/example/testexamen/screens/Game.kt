@@ -48,6 +48,7 @@ fun Game (
     player1Click: () -> Unit,
     player2Click: () -> Unit,
     escogeGanador: () -> Unit,
+    goBack: () -> Unit,
 ){
     Scaffold (
         topBar = {
@@ -59,7 +60,7 @@ fun Game (
                     ) {
                         IconButton(
                             //Botón de ir para atrás
-                            onClick = {},
+                            onClick = {goBack()},
                         ){
                             Icon (
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -87,6 +88,7 @@ fun Game (
             player1Click= player1Click,
             player2Click= player2Click,
             escogeGanador = escogeGanador,
+
         )
 
     }
@@ -101,6 +103,7 @@ fun GameContent(
     player1Click: () -> Unit,
     player2Click: () -> Unit,
     escogeGanador: () -> Unit,
+
 ){
     Column(
         modifier = modifier.fillMaxSize(),
@@ -164,6 +167,6 @@ fun GameContent(
 fun GamePreview() {
     val navController = rememberNavController()
     TestExamenTheme {
-        Game({ navController.navigate(route = AppScreens.GameOver.route)}, 0, 0, escogeGanador = {}, player1Click = {}, player2Click = {})
+        Game({ navController.navigate(route = AppScreens.GameOver.route)}, 0, 0, escogeGanador = {}, player1Click = {},goBack = {} ,player2Click = {})
     }
 }

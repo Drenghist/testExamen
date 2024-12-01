@@ -1,5 +1,6 @@
 package com.example.testexamen.navigation
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -23,6 +24,8 @@ fun AppNavigation(
 
     NavHost(navController, startDestination = AppScreens.Home.route) {
         composable(AppScreens.Home.route){
+            BackHandler(true) {
+            }
             Home(
                 goGame = {
                     navController.navigate(route = AppScreens.Game.route)
@@ -39,6 +42,7 @@ fun AppNavigation(
                 player1Click = {gameViewModel.player1Click()},
                 player2Click = {gameViewModel.player2Click()},
                 escogeGanador = {gameViewModel.updateGanador()},
+                goBack = {navController.popBackStack()}
             )
         }
         composable(AppScreens.GameOver.route){
@@ -46,6 +50,9 @@ fun AppNavigation(
                 winner = gameUiState.winner,
                 goHome = {
                     navController.navigate(route = AppScreens.Home.route)
+                },
+                resetGame = {
+                    gameViewModel.resetGame()
                 }
             )
         }

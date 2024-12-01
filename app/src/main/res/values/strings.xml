@@ -12,4 +12,6 @@
     <string name="win_p1">Ha ganado el jugador 1</string>
     <string name="win_p2">Ha ganado el jugador 2</string>
     <string name="draw">Ha habido un empate</string>
+    <string name="reiniciar">Reiniciar</string>
+    <string name="noGanador"></string>
 </resources>
