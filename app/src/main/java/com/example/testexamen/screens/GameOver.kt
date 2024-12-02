@@ -21,7 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.example.testexamen.R
-import com.example.testexamen.navigation.AppScreens
 import com.example.testexamen.ui.theme.TestExamenTheme
 
 @Composable
@@ -87,7 +86,6 @@ fun GameOverContent (goHome:()-> Unit,resetGame: () -> Unit,modifier : Modifier,
 @Preview(showBackground = true)
 @Composable
 fun OverPreview() {
-    val navController = rememberNavController()
     TestExamenTheme {
         GameOver(goHome = {}, resetGame = {},mensaje  = "2131296334")
     }
