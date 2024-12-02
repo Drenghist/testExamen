@@ -1,6 +1,6 @@
 package com.example.testexamen.navigation
 
-import androidx.activity.compose.BackHandler
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -24,8 +24,6 @@ fun AppNavigation(
 
     NavHost(navController, startDestination = AppScreens.Home.route) {
         composable(AppScreens.Home.route){
-            BackHandler(true) {
-            }
             Home(
                 goGame = {
                     navController.navigate(route = AppScreens.Game.route)
