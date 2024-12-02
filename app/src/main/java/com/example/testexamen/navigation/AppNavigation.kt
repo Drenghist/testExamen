@@ -6,9 +6,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.testexamen.screens.Game
 import com.example.testexamen.screens.GameOver
 import com.example.testexamen.screens.Home
@@ -32,8 +34,8 @@ fun AppNavigation(
         }
         composable(AppScreens.Game.route){
             Game(
-                goResult = {
-                    navController.navigate(route = AppScreens.GameOver.route)
+                goResult  = {
+                    navController.navigate(route = AppScreens.GameOver.route+"/$it")
                 },
                 player1Value = gameUiState.player1Number,
                 player2Value = gameUiState.player2Number,
@@ -43,15 +45,19 @@ fun AppNavigation(
                 goBack = {navController.popBackStack()}
             )
         }
-        composable(AppScreens.GameOver.route){
+        composable(AppScreens.GameOver.route+ "/{text}", arguments = listOf(navArgument(name = "text") {
+            type = NavType.StringType
+        }
+        )) {
             GameOver(
-                winner = gameUiState.winner,
+                //winner = gameUiState.winner, AR:Ya no me hace falta, paso x parámetros
                 goHome = {
                     navController.popBackStack(route = AppScreens.Home.route,false)
                 },
                 resetGame = {
                     gameViewModel.resetGame()
-                }
+                },
+                mensaje = it.arguments?.getString("text")
             )
         }
     }

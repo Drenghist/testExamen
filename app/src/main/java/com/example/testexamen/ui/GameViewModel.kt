@@ -23,10 +23,12 @@ class GameViewModel : ViewModel() {
         }
     }
 
-    fun updateGanador (){
-        _uiState.update { currentState ->
-            currentState.copy(winner = ganador())
-        }
+    fun updateGanador (): Int{
+        /* AR-> ya no me hace falta, mando el mensaje
+         *_uiState.update { currentState ->
+         *   currentState.copy(winner = ganador())
+        }*/
+        return ganador()
     }
 
     fun ganador(): Int{

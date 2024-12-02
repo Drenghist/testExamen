@@ -27,16 +27,18 @@ import com.example.testexamen.ui.theme.TestExamenTheme
 @Composable
 fun GameOver (
     goHome: () -> Unit,
-    winner : Int,
+    //winner : Int, AR:Ya no me hace falta, paso x parámetros
     resetGame : () -> Unit,
+    mensaje:String?,
     ) {
     Scaffold () {
         GameOverContent(
             // it es el padding que nos llega del Scaffold
             modifier = Modifier.padding(it),
-            winner = winner,
+            //winner = winner, AR:Ya no me hace falta, paso x parámetros
             goHome = goHome,
             resetGame = resetGame,
+            mensaje = mensaje,
         )
     }
 
@@ -45,17 +47,22 @@ fun GameOver (
 }
 
 @Composable
-fun GameOverContent (winner : Int,goHome:()-> Unit,resetGame: () -> Unit,modifier : Modifier) {
+fun GameOverContent (goHome:()-> Unit,resetGame: () -> Unit,modifier : Modifier, mensaje : String?) {
     Column (
         modifier= Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(
-            text = stringResource(winner),
-            style = MaterialTheme.typography.titleLarge,
-            color= MaterialTheme.colorScheme.primary
-        )
+        mensaje?.let {
+            Text(
+                text = stringResource(it.toInt()),
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
+
+
+
         Spacer(modifier = Modifier.height(64.dp))
 
 
@@ -82,6 +89,6 @@ fun GameOverContent (winner : Int,goHome:()-> Unit,resetGame: () -> Unit,modifie
 fun OverPreview() {
     val navController = rememberNavController()
     TestExamenTheme {
-        GameOver({ navController.navigate(route = AppScreens.GameOver.route)},0, {})
+        //GameOver({ navController.navigate(route = AppScreens.GameOver.route)},0, {})
     }
 }

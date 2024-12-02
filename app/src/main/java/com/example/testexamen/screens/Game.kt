@@ -1,5 +1,6 @@
 package com.example.testexamen.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,12 +35,12 @@ import com.example.testexamen.ui.theme.TestExamenTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Game (
-    goResult: () -> Unit,
+    goResult: (Int) -> Unit,
     player1Value: Int,
     player2Value: Int,
     player1Click: () -> Unit,
     player2Click: () -> Unit,
-    escogeGanador: () -> Unit,
+    escogeGanador: () -> Int,
     goBack: () -> Unit,
 ){
     Scaffold (
@@ -89,12 +90,12 @@ fun Game (
 @Composable
 fun GameContent(
     modifier: Modifier,
-    goResult: () -> Unit,
+    goResult: (Int) -> Unit,
     player1Value : Int,
     player2Value:Int,
     player1Click: () -> Unit,
     player2Click: () -> Unit,
-    escogeGanador: () -> Unit,
+    escogeGanador: () -> Int,
 
 ){
     Column(
@@ -144,8 +145,8 @@ fun GameContent(
         Button(
             enabled = ((player1Value != 0) and (player2Value != 0)),
             onClick = {
-                escogeGanador()
-                goResult()
+
+                goResult(escogeGanador())
             }
         ) {
             Text(stringResource(R.string.terminar_partida))
@@ -159,6 +160,6 @@ fun GameContent(
 fun GamePreview() {
     val navController = rememberNavController()
     TestExamenTheme {
-        Game({ navController.navigate(route = AppScreens.GameOver.route)}, 0, 0, escogeGanador = {}, player1Click = {},goBack = {} ,player2Click = {})
+        //Game({ navController.navigate(route = AppScreens.GameOver.route)}, 0, 0, escogeGanador = {}, player1Click = {},goBack = {} ,player2Click = {})
     }
 }
