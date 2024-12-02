@@ -13,13 +13,13 @@ class GameViewModel : ViewModel() {
 
     fun player1Click(){
         _uiState.update { currentState ->
-            currentState.copy(player1Number = (0..13).random())
+            currentState.copy(player1Number = (1..13).random())
         }
     }
 
     fun player2Click(){
         _uiState.update { currentState ->
-            currentState.copy(player2Number = (0..13).random())
+            currentState.copy(player2Number = (1..13).random())
         }
     }
 
