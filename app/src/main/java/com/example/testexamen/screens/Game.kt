@@ -1,6 +1,5 @@
 package com.example.testexamen.screens
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -160,6 +159,6 @@ fun GameContent(
 fun GamePreview() {
     val navController = rememberNavController()
     TestExamenTheme {
-        //Game({ navController.navigate(route = AppScreens.GameOver.route)}, 0, 0, escogeGanador = {}, player1Click = {},goBack = {} ,player2Click = {})
+        Game({ navController.navigate(route = AppScreens.GameOver.route)}, 0, 0, escogeGanador = {2131296334}, player1Click = {},goBack = {} ,player2Click = {})
     }
 }
