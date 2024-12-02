@@ -49,7 +49,7 @@ fun AppNavigation(
             GameOver(
                 winner = gameUiState.winner,
                 goHome = {
-                    navController.navigate(route = AppScreens.Home.route)
+                    navController.popBackStack(route = AppScreens.Home.route,false)
                 },
                 resetGame = {
                     gameViewModel.resetGame()
