@@ -89,6 +89,6 @@ fun GameOverContent (goHome:()-> Unit,resetGame: () -> Unit,modifier : Modifier,
 fun OverPreview() {
     val navController = rememberNavController()
     TestExamenTheme {
-        //GameOver({ navController.navigate(route = AppScreens.GameOver.route)},0, {})
+        GameOver(goHome = {}, resetGame = {},mensaje  = "2131296334")
     }
 }
